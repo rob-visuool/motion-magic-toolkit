@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Motion Magic Toolkit | Visuool</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap');
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: #0e0e1a;
+    color: #fff;
+    min-height: 100vh;
+  }
+
+  header {
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    padding: 20px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .logo {
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    color: #fff;
+    text-decoration: none;
+  }
+  .logo span { color: #4fc3f7; }
+
+  .back-link {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+  .back-link:hover { color: #fff; }
+
+  .hero {
+    text-align: center;
+    padding: 64px 24px 48px;
+    max-width: 680px;
+    margin: 0 auto;
+  }
+
+  .badge {
+    display: inline-block;
+    background: #f7c948;
+    color: #0e0e1a;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 5px 14px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+  }
+
+  h1 {
+    font-size: clamp(28px, 6vw, 52px);
+    font-weight: 900;
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    text-transform: uppercase;
+    margin-bottom: 18px;
+  }
+
+  h1 em {
+    font-style: normal;
+    color: #4fc3f7;
+  }
+
+  .hero-sub {
+    font-size: 15px;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.6);
+    max-width: 480px;
+    margin: 0 auto 32px;
+  }
+
+  .how-it-works {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 0;
+  }
+
+  .step-pill {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 20px;
+    padding: 6px 14px;
+    font-size: 12px;
+    font-weight: 700;
+    color: rgba(255,255,255,0.55);
+    letter-spacing: 0.02em;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+  }
+
+  .step-pill .num {
+    background: #f7548a;
+    color: #fff;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    font-weight: 900;
+    flex-shrink: 0;
+  }
+
+  .step-arrow {
+    color: rgba(255,255,255,0.2);
+    font-size: 14px;
+    align-self: center;
+  }
+
+  .packs-section {
+    max-width: 680px;
+    margin: 52px auto 0;
+    padding: 0 20px 80px;
+  }
+
+  .section-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.3);
+    margin-bottom: 16px;
+  }
+
+  .pack-card {
+    background: #181828;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 16px;
+    padding: 22px 24px;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    transition: border-color 0.2s, background 0.2s;
+  }
+
+  .pack-card:hover {
+    border-color: rgba(79,195,247,0.35);
+    background: #1d1d30;
+  }
+
+  .pack-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #1a2a3a 0%, #0d1f2d 100%);
+    border: 1px solid rgba(79,195,247,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .pack-info { flex: 1; min-width: 0; }
+
+  .pack-name {
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    color: #fff;
+    margin-bottom: 4px;
+  }
+
+  .pack-meta {
+    font-size: 12px;
+    color: rgba(255,255,255,0.4);
+    font-weight: 400;
+  }
+
+  .open-btn {
+    background: #f7c948;
+    color: #0e0e1a;
+    border: none;
+    border-radius: 10px;
+    padding: 12px 22px;
+    font-size: 13px;
+    font-weight: 900;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    cursor: pointer;
+    font-family: inherit;
+    white-space: nowrap;
+    transition: background 0.15s, transform 0.1s;
+    text-decoration: none;
+    display: inline-block;
+  }
+
+  .open-btn:hover { background: #ffd84d; }
+  .open-btn:active { transform: scale(0.97); }
+
+  .app-note {
+    margin-top: 40px;
+    background: rgba(247,196,72,0.07);
+    border: 1px solid rgba(247,196,72,0.2);
+    border-radius: 12px;
+    padding: 16px 20px;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+
+  .app-note-icon {
+    font-size: 20px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .app-note-text {
+    font-size: 13px;
+    line-height: 1.6;
+    color: rgba(255,255,255,0.55);
+  }
+
+  .app-note-text strong {
+    color: #f7c948;
+    font-weight: 700;
+  }
+
+  footer {
+    border-top: 1px solid rgba(255,255,255,0.06);
+    padding: 24px 32px;
+    text-align: center;
+    font-size: 12px;
+    color: rgba(255,255,255,0.25);
+  }
+
+  footer a { color: rgba(255,255,255,0.4); text-decoration: none; }
+  footer a:hover { color: #fff; }
+
+  @media (max-width: 480px) {
+    header { padding: 16px 20px; }
+    .hero { padding: 44px 20px 36px; }
+    .pack-card { padding: 16px 18px; gap: 14px; }
+    .open-btn { padding: 10px 16px; font-size: 12px; }
+    .pack-icon { width: 44px; height: 44px; border-radius: 10px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <a href="https://www.visuool.co.uk" class="logo">VISUOOL</a>
+  <a href="https://www.visuool.co.uk" class="back-link">← Back to site</a>
+</header>
+
+<div class="hero">
+  <div class="badge">Free templates</div>
+  <h1>Motion Magic<br><em>Toolkit</em></h1>
+  <p class="hero-sub">Download free template packs to use with the OnionCam app and start animating your products today!</p>
+  <div class="how-it-works">
+    <div class="step-pill"><span class="num">1</span> Tap a pack below</div>
+    <div class="step-arrow">→</div>
+    <div class="step-pill"><span class="num">2</span> Opens in OnionCam</div>
+    <div class="step-arrow">→</div>
+    <div class="step-pill"><span class="num">3</span> Start animating</div>
+  </div>
+</div>
+
+<div class="packs-section">
+  <div class="section-label">Available packs</div>
+
+  <div class="pack-card">
+    <div class="pack-icon">
+      <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="13" cy="13" r="10" stroke="#4fc3f7" stroke-width="1.5" opacity="0.4"/>
+        <path d="M13 18 C13 18 9 14 9 11 C9 8.8 10.8 7 13 7 C15.2 7 17 8.8 17 11 C17 14 13 18 13 18Z" fill="#4fc3f7" opacity="0.7"/>
+        <circle cx="13" cy="11" r="2" fill="#fff"/>
+      </svg>
+    </div>
+    <div class="pack-info">
+      <div class="pack-name">Excited Jump</div>
+      <div class="pack-meta">Template pack for OnionCam</div>
+    </div>
+    <button class="open-btn" onclick="openPack('https://drive.google.com/uc?export=download&id=1cwAOIFOB7c4x-Lq3PYerXmadTlvCqwy_')">Open in app</button>
+  </div>
+
+  <div id="error-msg" style="display:none; margin-top:16px; background:rgba(231,74,74,0.12); border:1px solid rgba(231,74,74,0.3); border-radius:10px; padding:14px 18px; font-size:13px; color:rgba(255,255,255,0.7); line-height:1.6;">
+    <strong style="color:#f77;">Couldn't open OnionCam.</strong> Make sure the app is installed on this device, then try again.
+  </div>
+</div>
+
+<footer>
+  <p>© 2025 <a href="https://www.visuool.co.uk">Visuool</a> &nbsp;·&nbsp; Template packs are for use with the OnionCam app</p>
+</footer>
+
+<script>
+function openPack(downloadUrl) {
+  var encoded = encodeURIComponent(downloadUrl);
+  var appUrl = 'onioncam://load?url=' + encoded;
+
+  // Attempt to open the app
+  window.location.href = appUrl;
+
+  // If still on page after 2s, app probably isn't installed — show message
+  setTimeout(function() {
+    var msg = document.getElementById('error-msg');
+    if (msg) msg.style.display = 'block';
+  }, 2000);
+}
+</script>
+
+</body>
+</html>
