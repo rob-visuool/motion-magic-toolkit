@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Opening OnionCam…</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    background: #0e0e1a;
+    color: #fff;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 32px;
+  }
+  .card {
+    max-width: 320px;
+    width: 100%;
+  }
+  .icon {
+    width: 72px;
+    height: 72px;
+    border-radius: 18px;
+    background: #181828;
+    border: 1px solid rgba(79,195,247,0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+  }
+  h1 {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    letter-spacing: -0.01em;
+  }
+  p {
+    font-size: 14px;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.6;
+    margin-bottom: 28px;
+  }
+  .try-btn {
+    display: inline-block;
+    background: #f7c948;
+    color: #0e0e1a;
+    border: none;
+    border-radius: 10px;
+    padding: 13px 28px;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    font-family: inherit;
+    letter-spacing: 0.02em;
+    text-decoration: none;
+    margin-bottom: 16px;
+    width: 100%;
+  }
+  .back-link {
+    display: block;
+    font-size: 13px;
+    color: rgba(255,255,255,0.3);
+    text-decoration: none;
+    margin-top: 4px;
+  }
+  .back-link:hover { color: rgba(255,255,255,0.6); }
+  .status {
+    font-size: 13px;
+    color: rgba(255,255,255,0.35);
+    margin-top: 20px;
+    min-height: 20px;
+  }
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="icon">
+    <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+      <circle cx="16" cy="16" r="12" stroke="#4fc3f7" stroke-width="1.5" opacity="0.4"/>
+      <path d="M16 22 C16 22 11 17 11 13 C11 10.2 13.2 8 16 8 C18.8 8 21 10.2 21 13 C21 17 16 22 16 22Z" fill="#4fc3f7" opacity="0.8"/>
+      <circle cx="16" cy="13" r="2.5" fill="#fff"/>
+    </svg>
+  </div>
+  <h1>Excited Jump pack</h1>
+  <p>Tap the button below to open this template pack in OnionCam.</p>
+  <button class="try-btn" onclick="launch()">Open in OnionCam</button>
+  <a href="../index.html" class="back-link">← Back to all packs</a>
+  <div class="status" id="status"></div>
+</div>
+
+<script>
+var APP_URL = 'onioncam://load?url=' + encodeURIComponent('https://drive.google.com/uc?export=download&id=1cwAOIFOB7c4x-Lq3PYerXmadTlvCqwy_');
+
+function launch() {
+  document.getElementById('status').textContent = 'Opening OnionCam…';
+  window.location.href = APP_URL;
+  setTimeout(function() {
+    document.getElementById('status').innerHTML =
+      'Nothing happened? Make sure <strong style="color:#f7c948">OnionCam is installed</strong>, then tap again.';
+  }, 2500);
+}
+
+// Auto-attempt on page load — the user tapped a button to get here so this is a trusted gesture context
+window.addEventListener('load', function() {
+  setTimeout(launch, 400);
+});
+</script>
+</body>
+</html>
